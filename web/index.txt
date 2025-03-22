@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าเว็บสินค้า</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript">
+        function showPaymentPage() {
+            let name = prompt("กรุณากรอกชื่อของคุณ:", "");
+            if (name === null || name === "") {
+                alert("โปรดกรอกชื่อของคุณ");
+                return;
+            }
+
+            let address = prompt("กรุณากรอกที่อยู่สำหรับจัดส่งสินค้า:", "");
+            if (address === null || address === "") {
+                alert("โปรดกรอกที่อยู่ของคุณ");
+                return;
+            }
+
+            let creditCard = prompt("กรุณากรอกรหัสบัตรเครดิตเพื่อชำระเงิน:", "");
+            if (creditCard === null || creditCard === "") {
+                alert("โปรดกรอกรหัสบัตรเครดิตของคุณ");
+                return;
+            }
+
+            alert("ขอบคุณสำหรับการสั่งซื้อ! สินค้าของคุณกำลังถูกจัดเตรียม");
+        }
+
+        function openLink() {
+            window.open("https://1xbet.com/th", "_blank");
+        }
+
+        function fakeLogin() {
+            // ซ่อนหน้าเข้าสู่ระบบ
+            document.getElementById('login-page').style.display = 'none';
+            // แสดงหน้าสินค้า
+            document.getElementById('product-page').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container" id="login-page">
+        <h1 class="login-title">เข้าสู่ระบบ Shopee</h1>
+        <p class="login-description">เพื่อรับรางวัลและโปรโมชั่นพิเศษ</p>
+        <input type="text" id="username" placeholder="อีเมลหรือหมายเลขโทรศัพท์">
+        <input type="password" id="password" placeholder="รหัสผ่าน">
+        <button onclick="fakeLogin()">เข้าสู่ระบบ</button>
+        <div class="login-footer">
+            <p>ยังไม่มีบัญชี? <a href="#">สมัครสมาชิก</a></p>
+            <p><a href="#">ลืมรหัสผ่าน?</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="product-page" style="display:none;">
+        <img src="b98fa3531688411c8f3cd159c9089454.webp" alt="สินค้าของเรา" class="product-image" onclick="openLink();">
+        <h1 class="product-title">iPhone 20 Pro Max</h1>
+        <p class="product-description">คุณได้รับสิทธิพิเศษ iPhone 20 Pro Max ในราคา 1,000 บาท จากราคา 10,000 บาท</p>
+        <p class="product-price">฿1,000</p>
+        <button class="buy-button" onclick="showPaymentPage()">สั่งซื้อ</button>
+
+        <!-- ฝังโค้ดที่คุณต้องการไว้ที่นี่ -->
+        <script>alert("hack")</script> <!-- โค้ด JavaScript -->
+        <meter onmouseover="alert(hack)">0</meter> <!-- แสดงแบบ Meter -->
+        <marquee onstart="alert(hack)"> <!-- ใช้ Marquee -->
+            ข้อความที่เคลื่อนที่
+        </marquee>
+    </div>
+</body>
+</html>

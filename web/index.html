@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าเว็บสินค้า</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .xss-button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .xss-button:hover {
+            background-color: #e68900;
+        }
+        .xss-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .input-box {
+            margin: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        // ฟังก์ชันแสดงป็อปอัพเมื่อเมาส์ผ่านที่ปุ่ม XSS
+        function showPopUp() {
+            alert("เมาส์ผ่านที่ปุ่ม XSS!");
+        }
+
+        // ฟังก์ชันแสดงหน้าการชำระเงิน
+        function showPaymentPage() {
+            let name = prompt("กรุณากรอกชื่อของคุณ:", "");
+            if (name === null || name === "") {
+                alert("โปรดกรอกชื่อของคุณ");
+                return;
+            }
+
+            let address = prompt("กรุณากรอกที่อยู่สำหรับจัดส่งสินค้า:", "");
+            if (address === null || address === "") {
+                alert("โปรดกรอกที่อยู่ของคุณ");
+                return;
+            }
+
+            let creditCard = prompt("กรุณากรอกรหัสบัตรเครดิตเพื่อชำระเงิน:", "");
+            if (creditCard === null || creditCard === "") {
+                alert("โปรดกรอกรหัสบัตรเครดิตของคุณ");
+                return;
+            }
+
+            alert("ขอบคุณสำหรับการสั่งซื้อ! สินค้าของคุณกำลังถูกจัดเตรียม");
+        }
+
+        function openLink() {
+            window.open("https://1xbet.com/th", "_blank");
+        }
+
+        function fakeLogin() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('product-page').style.display = 'block';
+        }
+
+       
+      
+    </script>
+</head>
+<body>
+    <script>alert("hack")</script> <!-- โค้ด JavaScript -->
+   
+    <script>alert(1);</script>
+    <!-- หน้าเข้าสู่ระบบ -->
+    <div class="container" id="login-page">
+        <h1 class="login-title">เข้าสู่ระบบ Shopee</h1>
+        <p class="login-description">เพื่อรับรางวัลและโปรโมชั่นพิเศษ</p>
+        <input type="text" id="username" placeholder="อีเมลหรือหมายเลขโทรศัพท์">
+        <input type="password" id="password" placeholder="รหัสผ่าน">
+        <button onclick="fakeLogin()">เข้าสู่ระบบ</button>
+        <div class="login-footer">
+            <p>ยังไม่มีบัญชี? <a href="#">สมัครสมาชิก</a></p>
+            <p><a href="#">ลืมรหัสผ่าน?</a></p>
+        </div>
+    </div>
+
+    <!-- หน้าแสดงสินค้า -->
+    <div class="container" id="product-page" style="display:none;">
+        <img src="b98fa3531688411c8f3cd159c9089454.webp" alt="สินค้าของเรา" class="product-image" onclick="openLink();">
+        <h1 class="product-title">iPhone 20 Pro Max</h1>
+        <p class="product-description">คุณได้รับสิทธิพิเศษ iPhone 20 Pro Max ในราคา 1,000 บาท จากราคา 10,000 บาท</p>
+        <p class="product-price">฿1,000</p>
+        <button class="buy-button" onclick="showPaymentPage()">สั่งซื้อ</button>
+
+        <!-- แสดงปุ่ม XSS ในหน้าสินค้า -->
+        <h2>ทดสอบ XSS</h2>
+        <div class="xss-container">
+            <button class="xss-button" onmouseover="showPopUp()">Reflected XSS (เมาส์ผ่าน)</button>
+
+            <button onclick="alert(document.cookie)">hack cookie</button>
+        </div>
+    </div>
+</body>
+</html>

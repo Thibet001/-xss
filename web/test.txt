@@ -1,0 +1,12 @@
+<html>
+<head>
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("ก่อกวนXSS Hack");
+        };
+    </script>
+</head>
+<body>
+    <h1>ทดสอบ XSS</h1>
+</body>
+</html>
